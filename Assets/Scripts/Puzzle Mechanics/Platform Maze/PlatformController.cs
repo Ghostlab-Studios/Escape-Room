@@ -31,6 +31,9 @@ public class PlatformController : Interactable
     [SerializeField]
     private Camera platformGameCamera;
 
+    [SerializeField]
+    private Canvas playerCanvas;
+
     private void Awake()
     {
         inputActions = new InputActions(); //initializes player input
@@ -46,6 +49,8 @@ public class PlatformController : Interactable
         //disable player actions
         firstPersonController.playerCanMove = false;
         firstPersonController.cameraCanMove = false;
+        //disable player canvas
+        playerCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -76,6 +81,8 @@ public class PlatformController : Interactable
                 //enable player actions
                 firstPersonController.playerCanMove = true;
                 firstPersonController.cameraCanMove = true;
+                //enable player canvas
+                playerCanvas.gameObject.SetActive(true);
             }
         }
     }
