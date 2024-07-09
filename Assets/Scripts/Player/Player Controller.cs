@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
 
-    InputActions inputActions;//this refers to the player input, which we can use to access flashlight key (F)
+    InputActions inputActions; //this refers to the player input, which we can use to access flashlight key (F)
 
     [SerializeField]
     private GameObject flashlight;
