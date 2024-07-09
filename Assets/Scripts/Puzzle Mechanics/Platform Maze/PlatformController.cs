@@ -34,14 +34,18 @@ public class PlatformController : Interactable
     private void Awake()
     {
         inputActions = new InputActions(); //initializes player input
+        firstPersonController = FindObjectOfType<FirstPersonController>();
     }
 
     protected override void Interact()
     {
         playing = true;
         //shift cameras
+        playerPOVCamera.gameObject.SetActive(false);
+        platformGameCamera.gameObject.SetActive(true);
         //disable player actions
         firstPersonController.playerCanMove = false;
+        firstPersonController.cameraCanMove = false;
     }
 
     // Update is called once per frame
@@ -63,13 +67,15 @@ public class PlatformController : Interactable
 
             platform.transform.localEulerAngles = new Vector3(targetRotationX, currentRot.y, targetRotationZ);
 
-            if (inputActions.Player.Interact.IsPressed()) //if player presses interact key
+            if (inputActions.Player.Exit.IsPressed()) //if player presses interact key
             {
-                Debug.Log("Player interacted with the object");
                 playing = false;
                 //shift camera back
+                playerPOVCamera.gameObject.SetActive(true);
+                platformGameCamera.gameObject.SetActive(false);
                 //enable player actions
                 firstPersonController.playerCanMove = true;
+                firstPersonController.cameraCanMove = true;
             }
         }
     }
