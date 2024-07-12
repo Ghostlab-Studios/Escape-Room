@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PickUpScript : MonoBehaviour
 {
@@ -14,19 +15,24 @@ public class PickUpScript : MonoBehaviour
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
+    InputActions inputActions;
+
     //Reference to script which includes mouse movement of player (looking around)
     //we want to disable the player looking around when rotating the object
     //example below 
     //MouseLookScript mouseLookScript;
+    private void Awake()
+    {
+        inputActions = new InputActions(); //initializes player input
+    }
+
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer"); //if your holdLayer is named differently make sure to change this ""
-
-        //mouseLookScript = player.GetComponent<MouseLookScript>();
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) //change E to whichever key you want to press to pick up
+        if (inputActions.Player.Interact.triggered)
         {
             if (heldObj == null) //if currently not holding anything
             {
@@ -54,11 +60,11 @@ public class PickUpScript : MonoBehaviour
         if (heldObj != null) //if player is holding object
         {
             MoveObject(); //keep object position at holdPos
-            if (Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true) //Mous0 (leftclick) is used to throw, change this if you want another button to be used)
-            {
-                StopClipping();
-                ThrowObject();
-            }
+            //if (Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true) //Mous0 (leftclick) is used to throw, change this if you want another button to be used)
+            //{
+            //    StopClipping();
+            //    ThrowObject();
+            //}
 
         }
     }
@@ -89,16 +95,16 @@ public class PickUpScript : MonoBehaviour
         //keep object position the same as the holdPosition position
         heldObj.transform.position = holdPos.transform.position;
     }
-    void ThrowObject()
-    {
-        //same as drop function, but add force to object before undefining it
-        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        heldObj.layer = 0;
-        heldObjRb.isKinematic = false;
-        heldObj.transform.parent = null;
-        heldObjRb.AddForce(transform.forward * throwForce);
-        heldObj = null;
-    }
+    //void ThrowObject()
+    //{
+    //    //same as drop function, but add force to object before undefining it
+    //    Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+    //    heldObj.layer = 0;
+    //    heldObjRb.isKinematic = false;
+    //    heldObj.transform.parent = null;
+    //    heldObjRb.AddForce(transform.forward * throwForce);
+    //    heldObj = null;
+    //}
     void StopClipping() //function only called when dropping/throwing
     {
         var clipRange = Vector3.Distance(heldObj.transform.position, transform.position); //distance from holdPos to the camera
@@ -113,5 +119,15 @@ public class PickUpScript : MonoBehaviour
             heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); //offset slightly downward to stop object dropping above player 
             //if your player is small, change the -0.5f to a smaller number (in magnitude) ie: -0.1f
         }
+    }
+
+    public void OnEnable()
+    {
+        inputActions.Player.Enable(); //here Player is referring to the name of the action map in Unity
+    }
+
+    public void OnDisable()
+    {
+        inputActions.Player.Disable(); //here Player is referring to the name of the action map in Unity
     }
 }
