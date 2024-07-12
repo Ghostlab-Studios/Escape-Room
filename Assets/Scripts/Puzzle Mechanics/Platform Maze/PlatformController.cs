@@ -16,7 +16,9 @@ public class PlatformController : Interactable
     [SerializeField]
     private float speed = 5.0f;
 
+    [SerializeField]
     private float xRotation;
+    [SerializeField]
     private float zRotation;
 
     private bool playing = false;
@@ -58,8 +60,38 @@ public class PlatformController : Interactable
     {
         if (playing == true)
         {
-            xRotation = Input.GetAxis("Vertical");
-            zRotation = -Input.GetAxis("Horizontal");
+            //xRotation = Input.GetAxis("Vertical");
+            //zRotation = -Input.GetAxis("Horizontal");
+
+            //Vector3 currentRot = platform.transform.localEulerAngles;
+
+            //// Convert angles to a range of -180 to 180 degrees
+            //if (currentRot.x > 180) currentRot.x -= 360;
+            //if (currentRot.z > 180) currentRot.z -= 360;
+
+            //float targetRotationX = Mathf.Clamp(currentRot.x + xRotation * speed * Time.deltaTime, -maxRotationX, maxRotationX);
+            //float targetRotationZ = Mathf.Clamp(currentRot.z + zRotation * speed * Time.deltaTime, -maxRotationZ, maxRotationZ);
+
+            //platform.transform.localEulerAngles = new Vector3(targetRotationX, currentRot.y, targetRotationZ);
+
+            //if (inputActions.Player.Exit.IsPressed()) //if player presses exit key (esc, will need to bind others for VR/AR)
+            //{
+            //    playing = false;
+            //    //shift camera back
+            //    playerPOVCamera.gameObject.SetActive(true);
+            //    platformGameCamera.gameObject.SetActive(false);
+            //    //enable player actions
+            //    firstPersonController.playerCanMove = true;
+            //    firstPersonController.cameraCanMove = true;
+            //    //enable player canvas
+            //    playerCanvas.gameObject.SetActive(true);
+            //}
+
+            // Read inputs
+            Vector2 movementInput = inputActions.Player.Navigate.ReadValue<Vector2>();
+
+            xRotation = movementInput.y;
+            zRotation = -movementInput.x;
 
             Vector3 currentRot = platform.transform.localEulerAngles;
 
@@ -72,7 +104,7 @@ public class PlatformController : Interactable
 
             platform.transform.localEulerAngles = new Vector3(targetRotationX, currentRot.y, targetRotationZ);
 
-            if (inputActions.Player.Exit.IsPressed()) //if player presses interact key
+            if (inputActions.Player.Exit.triggered) // Check if the exit action is triggered
             {
                 playing = false;
                 //shift camera back
