@@ -31,7 +31,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4559463799399949786}
-  - {fileID: 7085408921644297715}
   - {fileID: 313982623070778690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74,12 +73,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922499878690451476}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7710115908016708463}
+  m_Father: {fileID: 4559463799399949786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1501062250495315519
 GameObject:
@@ -114,7 +113,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7085408921644297715}
   m_Father: {fileID: 7710115908016708463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1430777216764064894
@@ -185,6 +185,8 @@ MonoBehaviour:
   maxRotationX: 45
   maxRotationZ: 45
   speed: 10
+  xRotation: 0
+  zRotation: 0
   playerPOVCamera: {fileID: 0}
   platformGameCamera: {fileID: 4923381776078807498}
   playerCanvas: {fileID: 0}

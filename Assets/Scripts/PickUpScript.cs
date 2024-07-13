@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//ALL ITEMS YOU WANT TO BE ABLE TO PICK UP must have collider and rigidbody and have "canPickUp" tag
 public class PickUpScript : MonoBehaviour
 {
     public GameObject player;
