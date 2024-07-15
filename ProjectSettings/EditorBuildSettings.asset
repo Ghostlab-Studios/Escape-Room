@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Room 1.unity
+    path: Assets/Scenes/testing.unity
     guid: d05ce5c49b77b4ee6b9e94a8c742ffd3
   - enabled: 1
     path: Assets/Scenes/Rotational Maze.unity

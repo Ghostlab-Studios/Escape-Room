@@ -26,7 +26,7 @@ public class PlatformController : Interactable
 
     InputActions inputActions; //this refers to the player input, which we can use to access interact key (E or left click)
 
-    FirstPersonController firstPersonController;
+    FPController firstPersonController;
 
     //[SerializeField]
     //private Camera playerPOVCamera;
@@ -42,7 +42,7 @@ public class PlatformController : Interactable
     private void Awake()
     {
         inputActions = new InputActions(); //initializes player input
-        firstPersonController = FindObjectOfType<FirstPersonController>();
+        firstPersonController = FindObjectOfType<FPController>();
     }
 
     protected override void Interact()
@@ -54,7 +54,7 @@ public class PlatformController : Interactable
             //playerPOVCamera.gameObject.SetActive(false);
             //platformGameCamera.gameObject.SetActive(true);
             ////disable player actions
-            firstPersonController.playerCanMove = false;
+            firstPersonController.SetPlayerMovement(false);
             //firstPersonController.cameraCanMove = false;
             //disable player canvas
             playerCanvas.gameObject.SetActive(false);
@@ -148,7 +148,7 @@ public class PlatformController : Interactable
             //playerPOVCamera.gameObject.SetActive(true);
             //platformGameCamera.gameObject.SetActive(false);
             ////enable player actions
-            firstPersonController.playerCanMove = true;
+            firstPersonController.SetPlayerMovement(true);
             //firstPersonController.cameraCanMove = true;
             //enable player canvas
             playerCanvas.gameObject.SetActive(true);
@@ -186,7 +186,7 @@ public class PlatformController : Interactable
                     //playerPOVCamera.gameObject.SetActive(true);
                     //platformGameCamera.gameObject.SetActive(false);
                     ////enable player actions
-                    firstPersonController.playerCanMove = true;
+                    firstPersonController.SetPlayerMovement(true);
                     //firstPersonController.cameraCanMove = true;
                     //enable player canvas
                     playerCanvas.gameObject.SetActive(true);
