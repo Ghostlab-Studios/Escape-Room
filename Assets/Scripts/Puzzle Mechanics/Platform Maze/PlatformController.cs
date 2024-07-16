@@ -5,7 +5,7 @@ using System;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 
-public class PlatformController : Interactable
+public class PlatformController : MonoBehaviour
 {
     [SerializeField]
     private GameObject platform;
@@ -45,8 +45,9 @@ public class PlatformController : Interactable
         firstPersonController = FindObjectOfType<FPController>();
     }
 
-    protected override void Interact()
+    public void Interact()
     {
+        Debug.Log("control");
         if (canPlay)
         {
             playing = true;
