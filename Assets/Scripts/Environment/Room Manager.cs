@@ -7,6 +7,8 @@ public class RoomManager : MonoBehaviour
 {
     public UnityEvent winner;
 
+    public ScreenFader screenFader;
+
     public void Winner()
     {
         if (true == true) //this is a placeholder, fill in whatever win condition here

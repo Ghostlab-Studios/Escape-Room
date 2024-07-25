@@ -62,6 +62,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Grow"",
+                    ""type"": ""Button"",
+                    ""id"": ""13d4fe9d-f603-4ba9-b880-24f864e29308"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -372,6 +381,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d226728-a73b-4fbe-9403-e782579fad34"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -900,6 +920,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Flashlight = m_Player.FindAction("Flashlight", throwIfNotFound: true);
         m_Player_Exit = m_Player.FindAction("Exit", throwIfNotFound: true);
         m_Player_Navigate = m_Player.FindAction("Navigate", throwIfNotFound: true);
+        m_Player_Grow = m_Player.FindAction("Grow", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -977,6 +998,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Flashlight;
     private readonly InputAction m_Player_Exit;
     private readonly InputAction m_Player_Navigate;
+    private readonly InputAction m_Player_Grow;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -985,6 +1007,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Flashlight => m_Wrapper.m_Player_Flashlight;
         public InputAction @Exit => m_Wrapper.m_Player_Exit;
         public InputAction @Navigate => m_Wrapper.m_Player_Navigate;
+        public InputAction @Grow => m_Wrapper.m_Player_Grow;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1006,6 +1029,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Navigate.started += instance.OnNavigate;
             @Navigate.performed += instance.OnNavigate;
             @Navigate.canceled += instance.OnNavigate;
+            @Grow.started += instance.OnGrow;
+            @Grow.performed += instance.OnGrow;
+            @Grow.canceled += instance.OnGrow;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1022,6 +1048,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Navigate.started -= instance.OnNavigate;
             @Navigate.performed -= instance.OnNavigate;
             @Navigate.canceled -= instance.OnNavigate;
+            @Grow.started -= instance.OnGrow;
+            @Grow.performed -= instance.OnGrow;
+            @Grow.canceled -= instance.OnGrow;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1163,6 +1192,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnFlashlight(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
+        void OnGrow(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
