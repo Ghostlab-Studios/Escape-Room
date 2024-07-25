@@ -21,9 +21,8 @@ public class ScaleDownButton : Interactable
     {
         if (timer >= inputDelay)
         {
-            //perform whatever actions here
-            Scalable scalableObject = platform.GetCurrentScalableObject();
-            if (scalableObject != null)
+            List<Scalable> scalableObjects = platform.GetScalableObjects();
+            foreach (var scalableObject in scalableObjects)
             {
                 scalableObject.ScaleDown();
             }

@@ -1,30 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    private Scalable currentScalableObject;
+    private List<Scalable> scalableObjects = new List<Scalable>();
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("scale up");
         Scalable scalable = other.GetComponent<Scalable>();
-        if (scalable != null)
+        if (scalable != null && !scalableObjects.Contains(scalable))
         {
-            currentScalableObject = scalable;
+            scalableObjects.Add(scalable);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         Scalable scalable = other.GetComponent<Scalable>();
-        if (scalable != null && scalable == currentScalableObject)
+        if (scalable != null && scalableObjects.Contains(scalable))
         {
-            currentScalableObject = null;
+            scalableObjects.Remove(scalable);
         }
     }
 
-    public Scalable GetCurrentScalableObject()
+    public List<Scalable> GetScalableObjects()
     {
-        return currentScalableObject;
+        return scalableObjects;
     }
 }
