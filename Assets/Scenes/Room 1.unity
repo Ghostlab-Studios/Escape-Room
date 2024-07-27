@@ -192,6 +192,18 @@ PrefabInstance:
       value: PickupItem
       objectReference: {fileID: 0}
     - target: {fileID: 6961124840643294952, guid: a72106d00291f420da0408df407a477f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961124840643294952, guid: a72106d00291f420da0408df407a477f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961124840643294952, guid: a72106d00291f420da0408df407a477f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961124840643294952, guid: a72106d00291f420da0408df407a477f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.43
       objectReference: {fileID: 0}
@@ -250,11 +262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4943810488403408849, guid: 3ca010587a56e4207902998a488a359f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.28
+      value: 11.227
       objectReference: {fileID: 0}
     - target: {fileID: 4943810488403408849, guid: 3ca010587a56e4207902998a488a359f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.62
+      value: 1.044
       objectReference: {fileID: 0}
     - target: {fileID: 4943810488403408849, guid: 3ca010587a56e4207902998a488a359f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -287,6 +299,10 @@ PrefabInstance:
     - target: {fileID: 4943810488403408849, guid: 3ca010587a56e4207902998a488a359f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574391217168390300, guid: 3ca010587a56e4207902998a488a359f, type: 3}
+      propertyPath: maxHeightDifference
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7047303097584734610, guid: 3ca010587a56e4207902998a488a359f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2208,7 +2224,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.336, y: 2.367, z: 10}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

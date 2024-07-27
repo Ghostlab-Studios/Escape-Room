@@ -18,7 +18,7 @@ public class ScaleManager : MonoBehaviour
         initialPosition2 = platform2.transform.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         AdjustPlatformHeights();
     }
