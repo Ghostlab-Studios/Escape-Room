@@ -8,9 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/testing.unity
     guid: d05ce5c49b77b4ee6b9e94a8c742ffd3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Rotational Maze.unity
     guid: 2882a8c1c0c47456a86c745884d43a89
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 94d2b78858a3d4e90ad0b6cdd50830ff, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 21bcf1d6dcd1d4cfca5c7092d63ca08c, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 6d9658d8cdccc475db0901ade12be76b, type: 2}
